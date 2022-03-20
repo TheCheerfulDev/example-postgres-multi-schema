@@ -1,0 +1,11 @@
+POST http://localhost:8080/boardgames
+Content-Type: application/json
+X-TenantID: tenant2
+
+{
+  "name": "Catan",
+  "minPlayers": 2,
+  "maxPlayers": 6
+}
+
+###

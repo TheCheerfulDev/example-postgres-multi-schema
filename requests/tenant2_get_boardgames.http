@@ -1,0 +1,5 @@
+GET http://localhost:8080/boardgames
+Accept: application/json
+X-TenantID: tenant2
+
+###
