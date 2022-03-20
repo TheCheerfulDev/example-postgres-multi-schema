@@ -1,6 +1,7 @@
 package nl.thecheerfuldev.multitenancy.api;
 
 import lombok.extern.slf4j.Slf4j;
+import nl.thecheerfuldev.multitenancy.api.dto.BoardGameDto;
 import nl.thecheerfuldev.multitenancy.domain.BoardGame;
 import nl.thecheerfuldev.multitenancy.repository.BoardGameRepository;
 import org.springframework.http.ResponseEntity;
@@ -24,9 +25,8 @@ public class BoardGameController {
     }
 
     @PostMapping("/boardgames")
-    public BoardGame post(@RequestBody BoardGame boardGame) {
-        log.info("Received Boardgame: {}", boardGame);
-        return this.boardGameRepository.save(boardGame);
+    public BoardGame post(@RequestBody BoardGameDto boardGameDto) {
+        return this.boardGameRepository.save(BoardGame.fromDto(boardGameDto));
     }
 
     @GetMapping("/boardgames/{id}")

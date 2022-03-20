@@ -1,6 +1,9 @@
 package nl.thecheerfuldev.multitenancy.core;
 
-public class ThreadLocalStorage {
+public final class ThreadLocalStorage {
+
+    private ThreadLocalStorage() {
+    }
 
     private static final ThreadLocal<String> TENANT = new ThreadLocal<>();
 

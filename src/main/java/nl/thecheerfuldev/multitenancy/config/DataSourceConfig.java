@@ -1,6 +1,7 @@
 package nl.thecheerfuldev.multitenancy.config;
 
-import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,17 +11,9 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
 
     @Bean
-    public DataSource dataSource() {
-        HikariDataSource dataSource = new TenantAwareHikariDataSource();
-
-        dataSource.setInitializationFailTimeout(0);
-        dataSource.setMaximumPoolSize(5);
-        dataSource.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
-        dataSource.addDataSourceProperty("url", "jdbc:postgresql://127.0.0.1:5432/multi");
-        dataSource.addDataSourceProperty("user", "postgres");
-        dataSource.addDataSourceProperty("password", "example");
-
-        return dataSource;
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    public DataSource dataSource(DataSourceProperties properties) {
+        return properties.initializeDataSourceBuilder().type(TenantAwareHikariDataSource.class).build();
     }
 
 }

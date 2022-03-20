@@ -24,5 +24,4 @@ public class TenantAwareHikariDataSource extends HikariDataSource {
         return connection;
     }
 
-
 }
