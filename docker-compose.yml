@@ -5,7 +5,10 @@ services:
   db:
     image: postgres:14.1
     restart: on-failure
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:r
     ports:
       - "5432:5432"
     environment:
       POSTGRES_PASSWORD: example
+      POSTGRES_DB: multi

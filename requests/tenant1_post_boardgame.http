@@ -9,3 +9,13 @@ X-TenantID: tenant1
 }
 
 ###
+
+POST http://localhost:8080/boardgames
+Content-Type: application/json
+X-TenantID: tenant1
+
+{
+  "name": "Deep Space D-6",
+  "minPlayers": 1,
+  "maxPlayers": 1
+}
