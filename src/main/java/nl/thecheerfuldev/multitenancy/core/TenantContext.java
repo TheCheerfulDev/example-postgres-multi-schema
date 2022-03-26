@@ -1,11 +1,11 @@
 package nl.thecheerfuldev.multitenancy.core;
 
-public final class ThreadLocalStorage {
+public final class TenantContext {
 
-    private ThreadLocalStorage() {
+    private TenantContext() {
     }
 
-    private static final ThreadLocal<String> TENANT = new ThreadLocal<>();
+    private static final ThreadLocal<String> TENANT = new InheritableThreadLocal<>();
 
     public static void setTenantName(String tenantName) {
         TENANT.set(tenantName);

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import nl.thecheerfuldev.multitenancy.api.dto.BoardGameDto;
 import nl.thecheerfuldev.multitenancy.domain.BoardGame;
 import nl.thecheerfuldev.multitenancy.repository.BoardGameRepository;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +26,12 @@ public class BoardGameController {
         this.boardGameRepository = boardGameRepository;
     }
 
-    @PostMapping("/boardgames")
-    public BoardGame post(@RequestBody BoardGameDto boardGameDto) {
-        return this.boardGameRepository.save(BoardGame.fromDto(boardGameDto));
+    @PostMapping(value = "/boardgames", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BoardGame> post(@RequestBody BoardGameDto boardGameDto) {
+        BoardGame savedBoardGame = this.boardGameRepository.save(BoardGame.fromDto(boardGameDto));
+
+        return ResponseEntity.created(URI.create("/boardgames/" + savedBoardGame.getId())).body(savedBoardGame);
+
     }
 
     @GetMapping("/boardgames/{id}")
