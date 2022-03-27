@@ -3,7 +3,7 @@ Content-Type: application/json
 X-TenantID: tenant1
 
 {
-  "name": "Xia",
+  "name": "Xia: Legacy of a drift system",
   "minPlayers": 3,
   "maxPlayers": 5
 }
