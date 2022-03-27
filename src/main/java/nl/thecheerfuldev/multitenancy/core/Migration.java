@@ -25,7 +25,7 @@ public class Migration {
         List<Map<String, Object>> maps = jdbcTemplate
                 .queryForList("SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE 'tenant%'");
 
-        List<String> tenants = maps.stream().map(bla -> (String) bla.get("schema_name")).toList();
+        List<String> tenants = maps.stream().map(map -> (String) map.get("schema_name")).toList();
 
         for (String tenant : tenants) {
             TenantContext.setTenantName(tenant);
