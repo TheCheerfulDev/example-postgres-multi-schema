@@ -37,10 +37,7 @@ public class BoardGameController {
     @GetMapping("/boardgames/{id}")
     public ResponseEntity<BoardGame> get(@PathVariable("id") long id) {
         Optional<BoardGame> byId = this.boardGameRepository.findById(id);
-        if (byId.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(byId.get());
+        return ResponseEntity.of(byId);
     }
 
     @GetMapping("/boardgames")
