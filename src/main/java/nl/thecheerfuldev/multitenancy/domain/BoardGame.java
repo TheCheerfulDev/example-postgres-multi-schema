@@ -1,5 +1,9 @@
 package nl.thecheerfuldev.multitenancy.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,10 +11,6 @@ import lombok.Setter;
 import lombok.ToString;
 import nl.thecheerfuldev.multitenancy.api.dto.BoardGameDto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 @Getter

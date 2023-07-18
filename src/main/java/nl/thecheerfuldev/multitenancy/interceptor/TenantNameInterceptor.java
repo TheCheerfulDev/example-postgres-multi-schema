@@ -1,11 +1,11 @@
 package nl.thecheerfuldev.multitenancy.interceptor;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import nl.thecheerfuldev.multitenancy.core.TenantContext;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class TenantNameInterceptor implements HandlerInterceptor {
 

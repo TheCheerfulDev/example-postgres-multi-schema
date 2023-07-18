@@ -1,10 +1,10 @@
 package nl.thecheerfuldev.multitenancy.core;
 
+import jakarta.annotation.PostConstruct;
 import org.flywaydb.core.Flyway;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
